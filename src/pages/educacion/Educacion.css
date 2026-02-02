@@ -13,13 +13,14 @@
     font-family: var(--font-cuerpo);
     padding: 80px 40px 60px;
     min-height: 100vh;
+    min-height: 100dvh;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
     position: relative; /* Necesario para el pseudo-elemento del fondo */
-    overflow: hidden; /* Para contener la animación */
+    overflow: hidden !important; /* Para contener la animación y evitar desbordamiento */
 }
 
 /* Fondo animado igual que en MisProyectos */
@@ -240,7 +241,7 @@
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
     scroll-snap-type: x mandatory; /* Ensures the scroll snaps to elements */
-    overscroll-behavior-x: contain; /* Evita el efecto de rebote/sombra del navegador al llegar al final */
+    overscroll-behavior-x: none; /* Evita el efecto de rebote/sombra del navegador al llegar al final */
 }
 
 .educacion-certificados-grid::-webkit-scrollbar {
@@ -279,6 +280,7 @@
     line-clamp: 3;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-height: 3.9em; /* Reserva espacio fijo para 3 líneas (1.3 * 3) para alinear tarjetas */
 }
 
 .certificado-card .card-institution {
@@ -420,6 +422,7 @@
     .certificado-card .card-main-title {
         -webkit-line-clamp: 4; /* Ajustado a la nueva altura */
         line-clamp: 4;
+        min-height: 5.2em; /* Reserva espacio para 4 líneas en tablet vertical */
     }
     .educacion-video {
         width: 90%;
@@ -449,6 +452,7 @@
         font-size: 0.9rem;
         -webkit-line-clamp: 4; /* Ajustado a la nueva altura */
         line-clamp: 4;
+        min-height: 5.2em; /* Reserva espacio para 4 líneas en tablet horizontal */
     }
     .certificado-card .card-institution {
         font-size: 0.8rem;

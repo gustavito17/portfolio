@@ -216,6 +216,10 @@ const EducacionContent: React.FC = () => {
         close={() => setOpen(false)}
         index={index}
         slides={slides}
+        render={{
+          buttonPrev: slides.length <= 1 ? () => null : undefined,
+          buttonNext: slides.length <= 1 ? () => null : undefined,
+        }}
       />
     </div>
   );
@@ -288,7 +292,7 @@ const EducacionLayout: React.FC<{ isLanding?: boolean; isMobile: boolean }> = ({
   }
 
   return (
-    <div style={{ '--page-bg': '#0B343C', '--page-accent': '#A9BE9D' } as React.CSSProperties}>
+    <div style={{ '--page-bg': '#0B343C', '--page-accent': '#A9BE9D', width: '100%' } as React.CSSProperties}>
       {!isLanding && <Navbar />}
       <EducacionContent />
     </div>
