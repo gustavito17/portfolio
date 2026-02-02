@@ -1,0 +1,619 @@
+:root {
+  --azul-oscuro: #0B343C;
+  --verde-texto: #A9BE9D;
+  --font-titulo: 'Tanker', sans-serif;
+  --font-cuerpo: 'Clash Grotesk', sans-serif;
+}
+
+.proyectos-seccion {
+  background-color: var(--azul-oscuro);
+  color: var(--verde-texto);
+  font-family: var(--font-cuerpo);
+  padding: 100px 20px 60px; /* Aumentado el padding superior para dejar espacio al header */
+  text-align: center;
+  min-height: 100vh; /* Asegura que la sección ocupe al menos toda la altura de la pantalla */
+  position: relative; /* Needed for the pseudo-element */
+  overflow: hidden; /* To contain the animation */
+}
+
+.proyectos-seccion::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+  animation: breath 10s infinite ease-in-out;
+  z-index: 0;
+}
+
+@keyframes breath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.9;
+  }
+}
+
+.proyectos-titulo-main {
+  font-family: var(--font-titulo);
+  font-size: 4rem;
+  margin-bottom: 40px;
+  color: var(--verde-texto);
+  position: relative;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.proyecto-grid-item {
+  position: relative;
+  overflow: visible;
+}
+
+.proyecto-card {
+  position: relative;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+}
+
+/* Removed .proyecto-card:hover rule */
+
+.card-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 52, 60, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px; /* Ajustado el padding para mejor espaciado en móvil */
+  box-sizing: border-box;
+  gap: 15px; /* Increased gap for vertical spacing */
+}
+
+.proyecto-titulo-card {
+  font-family: var(--font-titulo);
+  font-size: 2.2rem;
+  transform: translateY(260px); /* Moved down by default */
+  transition: transform 0.4s ease, font-size 0.4s ease, height 0.4s ease; /* Añadida transición para la altura */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 1; /* Visible by default */
+  height: 5rem; /* Fixed height for 2 lines */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text horizontally */
+}
+
+.proyecto-skills {
+  display: flex;
+  justify-content: center; /* Added to center icons horizontally */
+  gap: 10px; /* Espaciado horizontal entre iconos ajustado */
+  opacity: 0; /* Hidden by default */
+  transform: translateY(50px); /* Moved down by default */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.icon-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espaciado vertical entre filas de iconos ajustado */
+  min-height: 55px;
+}
+
+.skill-icon {
+    font-size: 1.4rem; /* Tamaño de iconos ajustado */
+    color: var(--verde-texto); /* Ensure icons have the correct color */
+    transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+    transform: scale(1.2); /* Add a little zoom effect on hover */
+}
+
+.proyecto-descripcion {
+  font-size: 1.1rem; /* Tamaño de fuente ajustado */
+  margin-bottom: 1rem; /* Added margin-bottom */
+  transition-delay: 0.2s; /* Aparece con más retraso */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0; /* Hidden by default */
+  transform: translateY(50px); /* Moved down by default */
+}
+
+.proyectos-grid .mis-proyectos-explore-button {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, opacity 0.4s ease, transform 0.4s ease; /* Added opacity and transform to transition */
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  background: var(--azul-oscuro); /* Assuming --page-bg is --azul-oscuro */
+  color: var(--verde-texto) !important; /* Assuming --page-accent is --verde-texto */
+  border: none;
+  font-family: var(--font-cuerpo); /* Added this line */
+  /* Removed transition-delay: 0.3s; */
+  opacity: 0 !important; /* Hidden by default, force it */
+  transform: translateY(50px) !important; /* Moved down by default, force it */
+}
+
+/* New class for debugging visibility */
+.debug-visible-button {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  background-color: red !important;
+  color: white !important;
+  z-index: 9999 !important; /* Ensure it's on top */
+}
+
+.proyecto-card.is-hovered .card-content {
+  justify-content: center;
+}
+
+.proyecto-card.is-hovered .proyecto-titulo-card {
+  transform: translateY(0); /* Moves up on hover */
+  opacity: 1; /* Stays visible */
+}
+
+.proyecto-card.is-hovered .proyecto-skills {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; /* Aparece con un ligero retraso */
+}
+
+.proyecto-card.is-hovered .proyecto-descripcion {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.proyecto-card.is-hovered .mis-proyectos-explore-button {
+  opacity: 1 !important; /* Visible on hover, force it */
+  transform: translateY(0) !important; /* Moves up on hover, force it */
+}
+
+.proyectos-grid .mis-proyectos-explore-button:hover {
+  background: var(--verde-texto) !important; /* Assuming --page-accent is --verde-texto */
+  color: var(--azul-oscuro) !important; /* Assuming --page-bg is --azul-oscuro */
+  box-shadow: none;
+}
+
+/* Estilos para el Popup de Video */
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Mayor que el Navbar (1001) */
+}
+
+.video-popup-content {
+  position: relative;
+  padding: 20px;
+  background-color: var(--azul-oscuro);
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.video-popup-content video {
+  width: 100%;
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: var(--verde-texto);
+  color: var(--azul-oscuro);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.small-corner-video {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  z-index: 5;
+  pointer-events: none;
+  transform: translateX(-75px);
+}
+
+.small-corner-video-top-right {
+  position: absolute;
+  top: -30px;
+  right: 0;
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  z-index: 5;
+  pointer-events: none;
+  transform: translateX(75px);
+}
+
+/* Move video on the last card to the bottom right */
+.proyecto-grid-item:last-child .small-corner-video-top-right {
+  top: auto;
+  bottom: -30px;
+}
+
+/* --- Large Desktop (1400px and up) --- */
+@media (min-width: 1400px) {
+  .proyectos-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Small Desktop (1025px to 1199px) --- */
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .proyectos-seccion {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .proyectos-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    justify-content: center;
+  }
+  .proyecto-card {
+    height: 300px;
+  }
+  .proyecto-titulo-card {
+    font-size: 1.6rem;
+    transform: translateY(180px);
+  }
+  .proyecto-descripcion {
+    font-size: 0.8rem;
+  }
+  .proyectos-titulo-main {
+    font-size: 3.5rem;
+  }
+  .mis-proyectos-explore-button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .proyectos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+  }
+  .proyecto-card {
+    height: 350px;
+  }
+  .proyecto-titulo-card {
+    font-size: 1.8rem;
+  }
+  .proyecto-descripcion {
+    font-size: 0.9rem;
+  }
+  .mis-proyectos-explore-button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+  .proyectos-titulo-main {
+    font-size: 3.8rem;
+  }
+}
+
+/* --- Tablet Vertical (Default for 581px to 1024px) --- */
+@media (min-width: 581px) and (max-width: 1024px) {
+  .proyectos-seccion {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .proyectos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    justify-content: center;
+  }
+  .proyecto-card {
+    height: 350px;
+  }
+  .proyecto-titulo-card {
+    transform: translateY(220px);
+  }
+  .proyectos-titulo-main {
+    font-size: 3.5rem;
+  }
+  .proyecto-grid-item:last-child .small-corner-video-top-right {
+    top: auto;
+    bottom: -30px;
+    right: 0;
+  }
+}
+
+/* --- Tablet Horizontal (Override) --- */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .proyectos-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  .proyecto-card {
+    height: 300px;
+  }
+  .proyecto-titulo-card {
+    font-size: 1.6rem;
+    transform: translateY(180px);
+  }
+  .proyecto-descripcion {
+    font-size: 0.8rem;
+  }
+  .mis-proyectos-explore-button {
+    font-size: 0.9rem !important;
+    padding: 6px 12px !important;
+  }
+  .skill-icon {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* --- Mobile (up to 580px) --- */
+@media (max-width: 580px) {
+  .proyectos-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .proyecto-card {
+    height: 300px;
+  }
+  .proyecto-titulo-card {
+    font-size: 1.8rem;
+    transform: translateY(190px); /* Título más abajo, ajustado para visibilidad */
+    height: 4rem;
+  }
+  .proyecto-descripcion {
+    font-size: 0.9rem;
+  }
+  .proyectos-titulo-main {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .proyectos-seccion {
+    padding: 80px 15px 40px;
+  }
+  .card-content {
+    gap: 8px; /* Espacio uniforme entre elementos */
+  }
+  .proyecto-descripcion {
+    margin-bottom: 0; /* Quitar margen para usar gap */
+  }
+  .skill-icon {
+    font-size: 1.1rem; /* Reducir iconos */
+  }
+}
+
+/* --- Mobile Horizontal (hasta 580px de ancho y landscape) - General */
+@media (max-width: 580px) and (orientation: landscape) {
+  .proyectos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .proyecto-card {
+    height: 250px;
+  }
+  .proyecto-titulo-card {
+    font-size: 1.5rem;
+    transform: translateY(170px); /* Título más abajo */
+    height: 3.6rem;
+  }
+  .proyecto-descripcion {
+    font-size: 0.8rem;
+  }
+  .proyectos-titulo-main {
+    font-size: 2rem;
+  }
+}
+
+/* --- Mobile Vertical (360px to 480px) --- */
+@media (min-width: 360px) and (max-width: 480px) and (orientation: portrait) {
+  .proyectos-seccion {
+    padding: 80px 15px 60px;
+    scroll-behavior: smooth; /* Scroll fluido */
+  }
+
+  .proyectos-titulo-main {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .proyectos-grid {
+    gap: 25px;
+  }
+
+  .proyecto-card {
+    height: 280px;
+  }
+
+  .card-content {
+    padding: 15px;
+    justify-content: center;
+    gap: 10px; /* Espaciado explícito para esta media query */
+  }
+
+  .proyecto-titulo-card {
+    font-size: 1.6rem;
+    transform: translateY(170px); /* Título más abajo, ajustado para visibilidad */
+    height: 3.8rem;
+  }
+
+  .proyecto-descripcion {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0; /* Usar gap del contenedor flex */
+  }
+
+  .skill-icon {
+    font-size: 1.1rem; /* Iconos más pequeños */
+  }
+
+  .proyectos-grid .mis-proyectos-explore-button {
+    font-size: 1rem;
+    padding: 6px 14px;
+    margin-top: 0; /* Usar gap del contenedor flex */
+  }
+
+  .proyecto-card.is-hovered .card-content {
+    justify-content: center;
+  }
+
+  .proyecto-card.is-hovered .proyecto-titulo-card {
+    transform: translateY(0);
+  }
+
+  .small-corner-video,
+  .small-corner-video-top-right {
+    width: 90px;
+    top: -20px;
+    bottom: auto;
+  }
+
+  .small-corner-video {
+      transform: translateX(-45px);
+      top: auto;
+      bottom: -20px;
+  }
+
+  .small-corner-video-top-right {
+      transform: translateX(45px);
+  }
+
+  .proyecto-grid-item:last-child .small-corner-video-top-right {
+    top: auto;
+    bottom: -20px;
+  }
+  .proyecto-skills { gap: 8px; } /* Espaciado horizontal entre iconos ajustado */
+  .icon-rows-container { /* Ajustes para espaciado vertical entre filas de iconos */
+    gap: 5px; /* Espaciado ajustado */
+  }
+}
+
+/* --- Mobile Horizontal (Custom for single line) --- */
+@media (max-width: 1023px) and (max-height: 480px) and (orientation: landscape) { /* Móvil Horizontal Específico */
+  .proyectos-seccion {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .proyectos-titulo-main {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .proyectos-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    height: auto;
+  }
+
+  .proyecto-grid-item {
+    flex: 1 1 23%;
+    max-width: 23%;
+  }
+
+  .proyecto-card {
+    height: 200px; /* Adjust height as needed */
+  }
+
+  .card-content {
+    padding: 10px;
+    gap: 5px; /* Espaciado reducido para vista horizontal */
+  }
+
+  .proyecto-titulo-card {
+    font-size: 1.2rem; /* Aumentado para mejor legibilidad */
+    transform: translateY(130px); /* Título más abajo */
+    height: 3rem; /* Permite que la altura se ajuste al contenido */
+  }
+
+  .proyecto-descripcion {
+    font-size: 0.8rem; /* Aumentado para mejor legibilidad */
+    margin-bottom: 0; /* Usar gap del contenedor flex */
+  }
+
+  .skill-icon {
+    font-size: 0.6rem !important; /* Mantener por si hay texto, pero el SVG lo anula */
+  }
+  .skill-icon svg { /* Apuntar directamente al SVG para esta vista específica */
+    width: 12px !important; /* Iconos aún más pequeños para esta vista específica */
+    height: 12px !important;
+  }
+
+  .proyectos-grid .mis-proyectos-explore-button {
+    font-size: 0.8rem !important; /* Aumentado para mejor legibilidad */
+    padding: 5px 10px !important;
+    margin-top: 0; /* Usar gap del contenedor flex */
+  }
+  .proyecto-skills { gap: 6px; } /* Espaciado horizontal entre iconos ajustado */
+
+
+  .proyecto-card.is-hovered .proyecto-titulo-card {
+    transform: translateY(0);
+  }
+
+  .small-corner-video,
+  .small-corner-video-top-right {
+    width: 80px;
+  }
+
+  .small-corner-video {
+    transform: translateX(-40px);
+  }
+
+  .small-corner-video-top-right {
+    transform: translateX(40px);
+  }
+}

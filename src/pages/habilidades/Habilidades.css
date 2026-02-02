@@ -1,0 +1,439 @@
+.habilidades-seccion {
+    background-color: var(--azul-oscuro);
+    color: var(--verde-texto);
+    font-family: var(--font-cuerpo);
+    padding: 100px 20px 60px;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden; /* Contener elementos absolutos */
+}
+
+.habilidades-background-video {
+    position: absolute; /* Cambiado de fixed a absolute */
+    bottom: 0;
+    left: -200px;
+    width: 750px;
+    height: 750px;
+    object-fit: contain;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.habilidades-background-video-right {
+    position: absolute; /* Cambiado de fixed a absolute */
+    bottom: 0;
+    right: -200px;
+    width: 750px;
+    height: 750px;
+    object-fit: contain;
+    opacity: 0.8;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.habilidades-header {
+    position: absolute; /* Cambiado de fixed a absolute */
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    max-width: 100%;
+    padding: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.habilidades-header h1 {
+    margin-bottom: 20px; /* Add space below the title */
+    text-align: center;
+    color: var(--page-accent); /* Adjust color to match theme */
+    font-family: var(--font-titulo); /* Apply the title font */
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Apply text shadow from Mis Proyectos */
+}
+
+.habilidades-seccion .effects {
+    display: flex;
+    gap: 10px;
+}
+
+.habilidades-seccion .effects a,
+.habilidades-seccion .effects a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.habilidades-seccion .effects input[type="radio"] {
+    display: none;
+}
+
+.habilidades-seccion .effects label {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    font-size: 1.2rem;
+    background: var(--page-bg);
+    color: var(--page-accent) !important;
+}
+
+.habilidades-seccion .effects input[type="radio"]:checked+a label,
+.habilidades-seccion .effects input[type="radio"]:checked+label {
+    background: var(--page-accent) !important;
+    color: var(--page-bg) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.habilidades-seccion .effects input[type="radio"]:not(:checked)+a label:hover,
+.habilidades-seccion .effects input[type="radio"]:not(:checked)+label:hover {
+    background: var(--page-accent) !important;
+    color: var(--page-bg) !important;
+    box-shadow: none;
+}
+
+.habilidades-seccion .effects input[type="radio"]:checked+a label:hover,
+.habilidades-seccion .effects input[type="radio"]:checked+label:hover {
+    background: var(--page-bg) !important;
+    color: var(--page-accent) !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Estilos para la cuadrícula de habilidades - ESTILOS ORIGINALES DE DESKTOP RESTAURADOS */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0;
+    margin-left: 20px;
+    position: relative;
+    top: 80px;
+    z-index: 1;
+}
+
+/* Contenedor de la tarjeta de habilidad - ESTILOS ORIGINALES DE DESKTOP RESTAURADOS */
+.skill-card {
+    background: var(--page-bg); 
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    perspective: 1000px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Contenedor interno para el flip */
+.skill-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.skill-card:hover .skill-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Lado frontal y trasero de la tarjeta */
+.skill-card-front,
+.skill-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.skill-card-front {
+    background: linear-gradient(135deg, var(--page-bg) 0%, var(--page-accent) 100%);
+    color: var(--page-bg);
+    font-family: var(--font-titulo);
+    font-size: 1.8rem; /* ESTILO ORIGINAL RESTAURADO */
+}
+
+.skill-card-back {
+    background: var(--page-bg);
+    color: var(--verde-texto);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-cuerpo);
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    min-width: 50px;
+    text-align: center;
+    color: var(--page-accent);
+    padding: 4px 3px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.tech-item:hover {
+    background-color: rgba(169, 190, 157, 0.1);
+}
+
+.tech-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+    transform: scale(1.15);
+}
+
+.tech-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+/* --- Tablet (581px to 1200px) --- NUEVAS REGLAS RESPONSIVE --- */
+@media (min-width: 581px) and (max-width: 1200px) {
+    .habilidades-header {
+        position: relative;
+        top: 0;
+        transform: none;
+        left: 0;
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para que quepan todas las tarjetas */
+        gap: 15px;
+        padding: 20px;
+        top: 120px;
+        top: 20px;
+        margin: 0 auto;
+        width: 90%;
+        max-width: 1000px; /* Prevenir que se estire demasiado */
+        padding-bottom: 120px;
+    }
+
+    .skill-card {
+        height: 220px;
+    }
+
+    .skill-card-front {
+        font-size: 1.8rem;
+    }
+
+    .tech-item {
+        min-width: 60px;
+    }
+    
+    .tech-item p {
+        font-size: 0.75rem;
+    }
+}
+
+/* --- Mobile (up to 580px) --- NUEVAS REGLAS RESPONSIVE --- */
+@media (max-width: 580px) {
+    .habilidades-header {
+        position: relative;
+        top: 0;
+        transform: none;
+        left: 0;
+        width: 100%;
+        padding-top: 80px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr; /* 1 columna para movil */
+        gap: 20px;
+        padding: 10px;
+        top: 20px; 
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .skill-card {
+        height: 200px;
+    }
+
+    .skill-card-front {
+        font-size: 1.6rem;
+    }
+
+    .skill-card-back {
+        gap: 5px 8px;
+        padding: 10px;
+    }
+
+    .tech-item {
+        min-width: 55px;
+        gap: 2px;
+    }
+
+    .tech-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .tech-item p {
+        font-size: 0.7rem;
+    }
+        .habilidades-background-video-right {
+            right: -350px;
+        }
+    }
+    
+    /* --- Tablet Vertical (581px to 1200px) --- */
+    @media (min-width: 581px) and (max-width: 1200px) and (orientation: portrait) {
+        .habilidades-header h1 {
+            font-size: 4rem; /* Increased font size for tablet portrait */
+        }
+    
+        .habilidades-header h1 span {
+            display: block; /* Stacks "Técnicas" below "Habilidades" */
+        }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en vertical */
+        max-width: 750px; /* Evita que las tarjetas se estiren demasiado */
+        top: 100px; /* Ajusta el espacio superior */
+        top: 20px; /* Ajusta el espacio superior */
+    }
+
+        .habilidades-background-video-right {
+            right: -450px;
+            bottom: -450px;
+            width: 900px;
+            height: 900px;
+        }
+    }
+
+    /* --- Tablet Horizontal (581px to 1200px) --- */
+    @media (min-width: 581px) and (max-width: 1200px) and (orientation: landscape) {
+        .habilidades-background-video-right {
+            right: -450px;
+            bottom: -450px;
+            width: 900px;
+            height: 900px;
+        }
+
+        .skills-grid {
+            top: 60px; /* Reducido para menos espacio con el título */
+            top: 20px; /* Reducido para menos espacio con el título */
+        }
+    }
+    
+    /* --- Mobile Vertical (up to 580px) --- */
+    @media (max-width: 580px) and (orientation: portrait) {
+        .habilidades-seccion {
+            padding-top: 10px;
+        }
+
+        .habilidades-header h1 {
+            font-size: 3.5rem; /* Increased font size for mobile portrait */
+        }
+    
+        .habilidades-header h1 span {
+            display: block; /* Stacks "Técnicas" below "Habilidades" */
+        }
+
+        .skills-grid {
+            top: 0;
+        }
+
+        .habilidades-background-video {
+            display: none;
+        }
+
+        .habilidades-background-video-right {
+            width: 600px;
+            height: 600px;
+            right: 50%;
+            top: 50%;
+            bottom: auto;
+            transform: translate(50%, -50%);
+            opacity: 0.5;
+        }
+    }
+
+    /* --- Mobile Horizontal (Landscape) --- */
+    @media (max-width: 950px) and (max-height: 500px) and (orientation: landscape) {
+        .habilidades-seccion {
+            padding: 20px;
+        }
+
+        .habilidades-header {
+            position: relative;
+            top: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        .habilidades-header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            top: 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .skill-card {
+            height: 120px;
+        }
+
+        .skill-card-front {
+            font-size: 1.1rem;
+        }
+
+        .tech-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .tech-item p {
+            font-size: 0.6rem;
+        }
+    }
+    

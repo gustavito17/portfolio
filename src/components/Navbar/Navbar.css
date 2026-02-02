@@ -1,0 +1,340 @@
+/* Estilos base para el contenedor del Navbar */
+.navbar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 1001; /* Asegurar que esté por encima del contenido */
+    background-color: transparent; /* Transparente por defecto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease; /* Transición suave para el fondo */
+    pointer-events: none; /* Permitir scroll y clicks a través del área transparente */
+}
+
+.navbar-header > * {
+    pointer-events: auto; /* Reactivar eventos en los elementos hijos (botones, links) */
+}
+
+/* Estilo para cuando el Navbar está activo (con scroll o menú abierto) */
+.navbar-header.navbar-active {
+}
+
+/* --- Menú de Escritorio --- */
+.effects {
+  display: flex !important; /* Aseguramos que sea flexbox */
+  gap: 10px !important; /* Aumentado para mayor separación y con !important */
+}
+
+/* Anula el color por defecto de los enlaces en el menú */
+.effects a, .effects a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Oculta los botones de radio ("selectores") */
+.effects input[type="radio"] {
+  display: none;
+}
+
+/* Estilo para botones (base e INACTIVO) */
+.effects label {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Sombra más intensa */
+  font-size: 1.2rem;
+  
+  /* Colores para estado INACTIVO */
+  background: var(--page-accent, #A9BE9D);
+  color: var(--page-bg, #0B343C) !important;
+}
+
+/* Estilo para el botón ACTIVO (cuando el radio está seleccionado) */
+.effects input[type="radio"]:checked + a label,
+.effects input[type="radio"]:checked + label {
+  /* Colores para estado ACTIVO */
+  background: var(--page-bg, #0B343C) !important;
+  color: var(--page-accent, #A9BE9D) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* HOVER en botones INACTIVOS */
+.effects input[type="radio"]:not(:checked) + a label:hover,
+.effects input[type="radio"]:not(:checked) + label:hover {
+  /* Invierte los colores del estado inactivo */
+  background: var(--page-bg, #0B343C) !important;
+  color: var(--page-accent, #A9BE9D) !important;
+  box-shadow: none;
+}
+
+/* HOVER en el botón ACTIVO */
+.effects input[type="radio"]:checked + a label:hover,
+.effects input[type="radio"]:checked + label:hover {
+  /* Invierte los colores del estado activo */
+  background: var(--page-accent, #A9BE9D) !important;
+  color: var(--page-bg, #0B343C) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Sombra más intensa en hover */
+}
+
+/* --- Navegación de Puntos --- */
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+
+
+.points a {
+  width: 12px;
+  height: 12px;
+  background: var(--page-bg); /* Changed to page-bg */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.points a:hover,
+.points a.active {
+  background: var(--page-accent); /* Changed to page-accent */
+  transform: scale(1.2);
+}
+
+
+/* --- Botón Hamburguesa --- */
+.hamburger-button {
+    display: none; /* Oculto por defecto en escritorio */
+    width: 40px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1002; /* Por encima del panel */
+    pointer-events: auto; /* Asegurar que el botón sea siempre interactivo, anulando el 'none' del header */
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.7)); /* Sombra más pronunciada para el ícono */
+}
+
+.hamburger-button .bar {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--page-accent, #A9BE9D);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+}
+
+.hamburger-button .bar1 { top: 0; }
+.hamburger-button .bar2 { top: 50%; transform: translateY(-50%); }
+.hamburger-button .bar3 { bottom: 0; }
+
+/* Animación del botón a "X" */
+.hamburger-button.is-open .bar1 {
+    transform: translateY(12px) rotate(45deg);
+}
+.hamburger-button.is-open .bar2 {
+    opacity: 0;
+}
+.hamburger-button.is-open .bar3 {
+    transform: translateY(-12px) rotate(-45deg);
+}
+
+
+/* --- Panel de Navegación Móvil --- */
+.mobile-nav-panel {
+    display: none; /* Cambiado a none para controlar con .is-open */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: 1001;
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.mobile-nav-panel.is-open {
+    display: flex; /* Se muestra al estar abierto */
+}
+
+.mobile-nav-panel .effects {
+    flex-direction: column;
+    gap: 2rem !important;
+    align-items: center;
+}
+
+/* --- NUEVOS ESTILOS PARA ENLACES MÓVILES --- */
+
+/* Estilo para enlaces móviles (base e INACTIVO) */
+.mobile-nav-panel .effects a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  font-size: 1.2rem;
+  background: var(--page-accent, #A9BE9D);
+  color: var(--page-bg, #0B343C) !important;
+  text-align: center;
+}
+
+/* Estilo para el enlace ACTIVO */
+.mobile-nav-panel .effects a.active {
+  background: var(--page-bg, #0B343C) !important;
+  color: var(--page-accent, #A9BE9D) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* HOVER en enlaces INACTIVOS */
+.mobile-nav-panel .effects a:not(.active):hover {
+  background: var(--page-bg, #0B343C) !important;
+  color: var(--page-accent, #A9BE9D) !important;
+  box-shadow: none;
+}
+
+/* HOVER en el enlace ACTIVO */
+.mobile-nav-panel .effects a.active:hover {
+  background: var(--page-accent, #A9BE9D) !important;
+  color: var(--page-bg, #0B343C) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* --- REGLAS RESPONSIVE --- */
+
+/* --- ESCRITORIO (1367px en adelante) --- */
+@media (min-width: 1367px) {
+    .hamburger-button,
+    .mobile-nav-panel {
+        display: none !important; /* Ocultar hamburguesa y panel móvil */
+    }
+    .desktop-nav {
+        display: flex !important; /* Mostrar navegación de escritorio */
+    }
+}
+
+/* --- TABLET (768px a 1366px) --- */
+@media (min-width: 768px) and (max-width: 1366px) {
+    /* Ocultar todo excepto el botón hamburguesa y el panel móvil */
+    .navbar-header > *:not(.hamburger-button):not(.mobile-nav-panel) {
+        display: none !important;
+    }
+    .hamburger-button {
+        display: block; /* Mostrar botón hamburguesa */
+    }
+    .navbar-header {
+        justify-content: flex-end; /* Mover botón a la derecha */
+        padding: 40px 30px;
+    }
+
+    /* TABLET: Orientación Vertical */
+    @media (orientation: portrait) {
+        .mobile-nav-panel .effects {
+            gap: 1.8rem !important;
+        }
+    }
+
+    /* TABLET: Orientación Horizontal */
+    @media (orientation: landscape) {
+        /* En tablet horizontal, el panel abierto tendrá items más pequeños */
+        .mobile-nav-panel .effects {
+            gap: 1rem !important;
+        }
+    }
+}
+
+/* --- CELULAR (hasta 767px) --- */
+@media (max-width: 767px) {
+    /* Ocultar todo excepto el botón hamburguesa y el panel móvil */
+    .navbar-header > *:not(.hamburger-button):not(.mobile-nav-panel) {
+        display: none !important;
+    }
+    .hamburger-button {
+        display: block;
+    }
+    .navbar-header {
+        justify-content: flex-end;
+        padding: 40px 30px;
+    }
+
+    /* CELULAR: Orientación Vertical (default) */
+    .mobile-nav-panel .effects {
+        gap: 1.5rem !important;
+    }
+
+    /* CELULAR: Orientación Horizontal */
+    @media (orientation: landscape) {
+        .mobile-nav-panel {
+            align-items: center; /* Centrar los botones */
+        }
+        .mobile-nav-panel .effects {
+            gap: 0.5rem !important; /* Menos espacio vertical */
+        }
+        .navbar-header {
+            padding: 20px 30px; /* Menos padding vertical en landscape */
+        }
+    }
+}
+
+/* Ocultar Navbar cuando la sección es parte de la Landing Page móvil */
+.landing-section .navbar-header {
+    display: none !important;
+}
+
+/* --- SOLUCIÓN DE SCROLL MÓVIL/TABLET --- */
+@media (max-width: 1366px) {
+
+    .mobile-nav-panel.is-open {
+        background-color: rgba(11, 52, 60, 0.85); /* Color de fondo con transparencia */
+        backdrop-filter: blur(10px); /* Efecto de desenfoque */
+        -webkit-backdrop-filter: blur(10px); /* Para Safari */
+    }
+
+    /* 2. Contenedor Scrollable Único */
+    .landing-page-container {
+        position: fixed !important;
+        inset: 0 !important;
+        height: 100dvh !important; /* Usar altura dinámica para móviles para evitar bloqueos */
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important; /* Prevenir bloqueo de scroll por desbordamiento horizontal */
+        -webkit-overflow-scrolling: touch !important;
+        z-index: 1000;
+        pointer-events: auto !important; /* Asegura que el contenedor reciba los eventos */
+        scroll-behavior: smooth !important; /* Scroll suave nativo */
+        touch-action: manipulation !important; /* Permite scroll y gestos horizontales, deshabilita zoom doble tap */
+        transform: translateZ(0); /* Forzar layer para rendimiento */
+        background-color: var(--page-bg);
+        overscroll-behavior: contain; /* Evita conflictos de scroll con el navegador */
+    }
+
+    /* 3. Resetear forzosamente todas las secciones hijas para que fluyan */
+    .landing-section > *,
+    .landing-section section {
+        position: relative !important;
+        height: auto !important;
+        min-height: 100dvh !important; /* Restaurar altura completa para Inicio, permitiendo scroll */
+        width: 100% !important;
+        overflow: visible !important;
+        z-index: auto !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important; /* Desactiva contextos de apilamiento extraños */
+    }
+
+}

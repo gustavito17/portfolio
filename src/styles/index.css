@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global box-sizing for consistent sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Previene scroll horizontal */
+  overflow-y: hidden; /* Previene scroll vertical */
+  background-color: var(--page-bg, #0B343C); /* Apply background to cover entire viewport */
+  height: 100%; /* Ensure full height */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+@layer utilities {
+  .text-shadow-dark {
+    text-shadow: 2px 2px 4px rgba(11, 52, 60, 0.5); /* Changed to dark blue */
+  }
+  .text-shadow-light {
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+  }
+}

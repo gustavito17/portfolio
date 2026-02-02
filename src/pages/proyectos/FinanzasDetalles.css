@@ -1,0 +1,571 @@
+/* FinanzasDetalles.css - State before complex gallery positioning */
+
+/* Page Section */
+.finanzas-detalles-seccion {
+  width: 100%;
+  padding: 100px 1rem 2rem;
+  background-color: var(--page-bg, #0B343C);
+}
+
+/* Hero Section */
+.hero-container {
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  max-width: 1400px; /* Shrink horizontally */
+  margin: 0 auto;
+}
+
+.hero-overlay {
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(11, 52, 60, 1) 0%, rgba(11, 52, 60, 0) 100%);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-family: var(--font-titulo, 'Sequel', sans-serif);
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  color: var(--page-accent, #A9BE9D);
+}
+
+.hero-description {
+  font-family: var(--font-cuerpo, 'Questrial', sans-serif);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--page-accent, #A9BE9D);
+}
+
+.cta-buttons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start; /* Added to prevent vertical stretching of items */
+}
+
+.code-links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Adjust gap as needed */
+  margin-top: 1rem; /* Add some space from the "Ver Código" button */
+}
+
+/* Gallery & Video */
+.gallery-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  position: relative; /* Set positioning context for arrows */
+  max-width: 1064px; /* Gallery (1064px) */
+  margin: 0 auto; /* Center the wrapper */
+}
+
+.gallery-side-video {
+  max-width: 250px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  position: absolute;
+  top: 60%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.gallery-side-video-left {
+  /* Center video in the side gutter */
+  left: calc(-25vw + 181px);
+  right: auto;
+}
+
+.gallery-side-video-right {
+  /* Center video in the side gutter */
+  right: calc(-25vw + 181px);
+  left: auto;
+}
+
+.gallery-container {
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem 0;
+  max-width: 1064px; /* 5 cards * 200px + 4 gaps * 16px */
+  /* Removed position: relative; */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.gallery-container::-webkit-scrollbar {
+  display: none;
+}
+
+.gallery-card {
+  width: 200px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.gallery-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: linear-gradient(to top, rgba(11, 52, 60, 0.9) 0%, rgba(11, 52, 60, 0) 100%);
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  font-family: var(--font-cuerpo, 'Questrial', sans-serif);
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: rgba(11, 52, 60, 0.85);
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 10px;
+}
+
+.lightbox-close-button {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  font-size: 40px;
+  cursor: pointer;
+  color: var(--page-accent, #A9BE9D);
+}
+
+/* Buttons */
+.proyecto-boton {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(11, 52, 60, 0.35);
+  backdrop-filter: blur(10px);
+  font-size: 1.2rem;
+  font-family: var(--font-titulo, 'Sequiel', sans-serif);
+  font-weight: bold;
+  background: rgba(11, 52, 60, 0.75);
+  color: var(--page-accent, #A9BE9D);
+  border: none;
+}
+
+.proyecto-boton:hover {
+  background: var(--page-accent, #A9BE9D) !important;
+  color: var(--page-bg, #0B343C) !important;
+  box-shadow: none;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background-color: rgba(11, 52, 60, 0.6);
+  border: 1px solid var(--page-accent, #A9BE9D);
+  color: var(--page-accent, #A9BE9D);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-arrow.left-arrow {
+  left: -20px;
+}
+
+.scroll-arrow.right-arrow {
+  right: -20px;
+}
+
+.scroll-arrow:hover {
+  background-color: var(--page-accent, #A9BE9D);
+  color: var(--page-bg, #0B343C);
+}
+
+.social-button {
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  box-shadow: 2px 2px 4px #000000;
+  background: #0B343C;
+  color: #A9BE9D;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* Added for horizontal centering */
+  border: none;
+  white-space: nowrap;
+  gap: 8px;
+}
+
+.social-button:hover {
+  background: #A9BE9D;
+  color: #0B343C;
+}
+
+.social-button svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  flex-shrink: 0; /* Evita que el ícono se encoja */
+}
+
+.social-button span {
+  display: flex;
+  align-items: center;
+}
+
+/* Tablet Vertical */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-container {
+    height: 75vh; /* Reducir altura de la imagen principal */
+  }
+
+  .hero-title {
+    font-size: 2.5rem; /* Reducir tamaño del título */
+  }
+
+  .hero-description {
+    font-size: 1.2rem; /* Reducir tamaño de la descripción */
+  }
+
+  .gallery-side-video {
+    /* Make videos smaller and lower */
+    max-width: 160px;
+    top: 80%;
+  }
+
+  .gallery-side-video-left {
+    /* Center video in the side gutter */
+    left: calc(-25vw + 98px);
+  }
+
+  .gallery-side-video-right {
+    /* Center video in the side gutter */
+    right: calc(-25vw + 98px);
+  }
+
+  .gallery-wrapper {
+    max-width: 512px; /* Gallery (512px) */
+    margin: 0 auto; /* Center the wrapper */
+    position: relative; /* Positioning context for arrows */
+  }
+
+  .gallery-container {
+    max-width: 512px; /* 3 cards * 160px + 2 gaps * 16px */
+    margin: 0 auto; /* Center the gallery */
+  }
+
+  .gallery-card {
+    width: 160px; /* Reducir ancho de las tarjetas */
+    height: 100px; /* Reducir alto de las tarjetas */
+  }
+
+  .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .scroll-arrow.left-arrow {
+    left: -20px; /* Center of 40px button aligns with gallery edge */
+  }
+
+  .scroll-arrow.right-arrow {
+    right: -20px; /* Center of 40px button aligns with gallery edge */
+  }
+}
+
+/* Tablet Horizontal */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .hero-container {
+    height: 60vh; /* Adjust height for landscape */
+  }
+
+  .hero-title {
+    font-size: 2.8rem; /* Adjust font size */
+  }
+
+  .hero-description {
+    font-size: 1.2rem; /* Adjust font size */
+  }
+
+  .gallery-wrapper {
+    max-width: 572px; /* Gallery (572px) */
+  }
+
+  .gallery-container {
+    max-width: 572px; /* 3 cards * 180px + 2 gaps * 16px */
+  }
+
+  .gallery-card {
+    width: 180px;
+    height: 110px;
+  }
+
+  .gallery-side-video {
+    max-width: 180px; /* Larger videos */
+    top: 95%; /* Adjust vertical position */
+    transform: translateY(-50%); /* Re-center vertically */
+  }
+
+  .gallery-side-video-left {
+    /* Center video in the side gutter */
+    left: calc(-25vw + 73px);
+  }
+
+  .gallery-side-video-right {
+    /* Center video in the side gutter */
+    right: calc(-25vw + 73px);
+  }
+
+  /* Explicitly set arrow positions for horizontal tablet */
+  .scroll-arrow.left-arrow {
+    left: -20px; /* Center of 40px button aligns with gallery edge */
+  }
+
+  .scroll-arrow.right-arrow {
+    right: -20px; /* Center of 40px button aligns with gallery edge */
+  }
+}
+
+/* Mobile Vertical */
+@media (max-width: 767px) and (orientation: portrait) {
+  .hero-container {
+    height: 65vh;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .gallery-wrapper {
+    max-width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr auto auto 1fr;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    gap: 0;
+    margin-top: 1rem;
+  }
+
+  .gallery-container {
+    width: 320px;
+    margin: 0 auto; /* This will center it inside the grid cell */
+    gap: 0.5rem;
+    grid-column: 1 / -1; /* Span across all columns */
+    grid-row: 1;
+    padding: 0;
+  }
+
+  .gallery-card {
+    width: calc((100% - 1rem) / 3);
+    height: 60px;
+  }
+
+  .gallery-card-overlay {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .gallery-side-video {
+    display: block;
+    position: static;
+    transform: none;
+    max-width: 150px;
+    height: auto;
+    grid-row: 2;
+    border-radius: 10px;
+  }
+
+  .gallery-side-video-left {
+    grid-column: 2;
+  }
+
+  .gallery-side-video-right {
+    grid-column: 3;
+  }
+
+  .scroll-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    top: 30px;
+  }
+
+  .scroll-arrow.left-arrow {
+    left: 50%;
+    margin-left: -175px; /* Half of gallery container (320px/2) + half of arrow (30px/2) */
+  }
+
+  .scroll-arrow.right-arrow {
+    right: 50%;
+    margin-right: -175px; /* Half of gallery container (320px/2) + half of arrow (30px/2) */
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .social-button {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .proyecto-boton {
+    padding: 6px 10px;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Forzando el tamaño del ícono para asegurar consistencia */
+  .cta-buttons .social-button svg,
+  .cta-buttons .proyecto-boton svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+/* Mobile Horizontal */
+@media (max-width: 1023px) and (max-height: 480px) and (orientation: landscape) {
+  .hero-container {
+    height: 50vh; /* Reducir altura de la imagen principal */
+  }
+
+  .hero-title {
+    font-size: 1.8rem; /* Reducir tamaño del título */
+  }
+
+  .hero-description {
+    font-size: 0.9rem; /* Reducir tamaño de la descripción */
+  }
+
+  .gallery-side-video {
+    /* Make videos smaller and lower */
+    max-width: 120px;
+    top: 85%;
+  }
+
+  .gallery-side-video-left {
+    /* Center video in the side gutter */
+    left: calc(-25vw + 80px);
+  }
+
+  .gallery-side-video-right {
+    /* Center video in the side gutter */
+    right: calc(-25vw + 80px);
+  }
+
+  .gallery-wrapper {
+    max-width: 432px; /* Adjusted for smaller gallery */
+  }
+
+  .gallery-container {
+    max-width: 332px; /* 3 cards * 100px + 2 gaps * 16px */
+  }
+
+  .gallery-card {
+    width: 100px; /* Reducir ancho de las tarjetas */
+    height: 65px; /* Reducir alto de las tarjetas */
+  }
+
+  .gallery-card-overlay {
+    font-size: 0.7rem;
+    padding: 0.3rem;
+  }
+
+  .scroll-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .scroll-arrow.left-arrow {
+    left: 34px;
+  }
+
+  .scroll-arrow.right-arrow {
+    right: 34px;
+  }
+
+  .cta-buttons {
+    gap: 0.5rem;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .social-button {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+  }
+
+  .proyecto-boton {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+  }
+
+  .cta-buttons .social-button svg,
+  .cta-buttons .proyecto-boton svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
