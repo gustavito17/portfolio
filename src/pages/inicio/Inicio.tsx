@@ -62,7 +62,7 @@ const InicioContent: React.FC = () => {
           </p>
           <div className="buttons-container flex items-center fade-in-on-load delay-3" style={{ gap: '1rem', marginTop: '0.25rem' }}>
             <a 
-              href="https://gustavito17.github.io/cv/CV_Gustavo_Abel_Leon_Silva.pdf" 
+              href="https://drive.google.com/file/d/1QkHzqsCciBoot9bWI4A2IBxFAOMonCVg/view?usp=drive_link" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="curriculum-btn social-button"
