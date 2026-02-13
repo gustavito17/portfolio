@@ -252,18 +252,18 @@
 .certificado-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     text-align: left;
-    padding: 1rem;
+    padding: 0.8rem;
     /* Altura fija para garantizar que todas las tarjetas sean idénticas */
-    height: 180px;
+    height: 190px;
     flex: 0 0 250px; /* Base para 4 tarjetas */
     width: 250px;
     scroll-snap-align: start; /* Each card is a snap point */
 }
 
 .certificado-card .card-body {
-    flex-grow: 1;
+    /* flex-grow: 1; Eliminado para que el contenido no empuje el footer hacia abajo */
 }
 
 .certificado-card .card-main-title {
@@ -300,12 +300,12 @@
 }
 
 .certificado-card .card-footer {
-    margin-top: 1rem;
-    padding-top: 0.75rem;
+    margin-top: 0.2rem;
+    padding-top: 0.5rem;
     border-top: 1px solid rgba(169, 190, 157, 0.2);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.2rem;
 }
 
 .certificado-card .metadata-item {
