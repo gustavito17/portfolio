@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./MisProyectos.css";
-import { FaReact, FaNode, FaGit, FaGithub, FaBootstrap, FaCss3Alt, FaCloud, FaPalette, FaPython, FaDatabase, FaServer, FaLock, FaEnvelope, FaJava, FaProjectDiagram, FaFileCode, FaUsersCog, FaSitemap, FaClipboardCheck, FaShieldAlt, FaCogs, FaFileAlt, FaCodeBranch, FaArrowUp, FaCheckCircle, FaCode, FaLayerGroup, FaChartBar, FaExchangeAlt, FaTerminal, FaRocket, FaBell, FaMobile } from 'react-icons/fa';
+import { FaReact, FaNode, FaGit, FaGithub, FaBootstrap, FaCss3Alt, FaCloud, FaPalette, FaPython, FaDatabase, FaServer, FaLock, FaEnvelope, FaJava, FaProjectDiagram, FaFileCode, FaUsersCog, FaSitemap, FaClipboardCheck, FaShieldAlt, FaCogs, FaFileAlt, FaCodeBranch, FaArrowUp, FaCheckCircle, FaCode, FaLayerGroup, FaChartBar, FaExchangeAlt, FaTerminal, FaRocket, FaBell, FaMobile, FaBug } from 'react-icons/fa';
 import { 
   SiExpress, 
   SiJsonwebtokens, 
@@ -179,17 +179,17 @@ const SkillIcon: React.FC<{ skill: string }> = ({ skill }) => {
     case 'expo':
       return <FaRocket title={skill} size={24} />;
     case 'supabase':
-      return <FaDatabase title={skill} size={24} />;
+      return <FaCloud title={skill} size={24} />;
     case 'asyncstorage':
       return <FaDatabase title={skill} size={24} />;
     case 'expo notifications':
       return <FaBell title={skill} size={24} />;
     case 'secure store':
-      return <FaLock title={skill} size={24} />;
+      return <FaShieldAlt title={skill} size={24} />;
     case 'joi':
       return <FaCheckCircle title={skill} size={24} />;
     case 'jest':
-      return <FaCheckCircle title={skill} size={24} />;
+      return <FaBug title={skill} size={24} />;
     default:
       return <span>{skill}</span>;
   }
@@ -229,7 +229,7 @@ const projects: Project[] = [
   },
   {
     title: "GusPad",
-    description: "App mobile de gestión de tareas y notas con autenticación, backend propio en la nube y notificaciones de recordatorio.",
+    description: "App mobile de tareas y notas con auth, recordatorios push y backend propio en la nube.",
     imageUrl: "/images/proyectos/notas/vistacarpetas.jpg",
     skills: [
       "React Native", "Expo", "TypeScript", "Node.js", "Express",

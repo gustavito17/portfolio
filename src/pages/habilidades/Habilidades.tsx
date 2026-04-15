@@ -16,6 +16,10 @@ import {
     FaFileAlt,
     FaCogs,
     FaJava,
+    FaMobile,
+    FaRocket,
+    FaCheckCircle,
+    FaBug,
 } from 'react-icons/fa';
 import {
     SiExpress,
@@ -29,6 +33,7 @@ import {
     SiReact,
     SiRender,
     SiJavascript,
+    SiTypescript,
 } from 'react-icons/si';
 
 // Importaciones diferidas
@@ -47,6 +52,7 @@ const skillsData = [
         stack: "Lenguajes",
         technologies: [
             { name: "JavaScript", icon: SiJavascript, color: COLORS.primary },
+            { name: "TypeScript", icon: SiTypescript, color: COLORS.primary },
             { name: "Python", icon: FaPython, color: COLORS.primary },
             { name: "Java", icon: FaJava, color: COLORS.primary },
         ]
@@ -54,7 +60,9 @@ const skillsData = [
     {
         stack: "Frontend",
         technologies: [
-            { name: "React", icon: FaReact, color: COLORS.primary }, 
+            { name: "React", icon: FaReact, color: COLORS.primary },
+            { name: "React Native", icon: FaMobile, color: COLORS.primary },
+            { name: "Expo", icon: FaRocket, color: COLORS.primary },
             { name: "React Router", icon: SiReact, color: COLORS.primary },
             { name: "Vite", icon: SiVite, color: COLORS.primary },
             { name: "Bootstrap", icon: FaBootstrap, color: COLORS.primary },
@@ -73,6 +81,7 @@ const skillsData = [
             { name: "JWT", icon: FaLock, color: COLORS.primary },
             { name: "bcryptjs", icon: FaShieldAlt, color: COLORS.primary },
             { name: "Passlib", icon: FaLock, color: COLORS.primary },
+            { name: "Joi", icon: FaCheckCircle, color: COLORS.primary },
             { name: "API REST", icon: FaServer, color: COLORS.primary },
         ]
     },
@@ -91,11 +100,13 @@ const skillsData = [
             { name: "Nodemon", icon: FaCogs, color: COLORS.primary },
             { name: "Render", icon: SiRender, color: COLORS.primary },
             { name: "Cloudinary", icon: FaCloud, color: COLORS.primary },
+            { name: "Supabase", icon: FaCloud, color: COLORS.primary },
         ]
     },
     {
         stack: "Testing & Docs",
         technologies: [
+            { name: "Jest", icon: FaBug, color: COLORS.primary },
             { name: "pytest", icon: SiPytest, color: COLORS.primary },
             { name: "Swagger", icon: SiSwagger, color: COLORS.primary },
             { name: "ReDoc", icon: FaFileAlt, color: COLORS.primary },
