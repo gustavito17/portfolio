@@ -124,6 +124,19 @@ const useLayoutState = () => {
 const HabilidadesContent: React.FC = () => {
     return (
         <>
+            {/* Filtro SVG para el borde eléctrico — oculto, solo define el filtro */}
+            <svg style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} aria-hidden="true">
+                <defs>
+                    <filter id="skill-turbulent-displace">
+                        <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="2" seed="3" result="noise">
+                            <animate attributeName="seed" values="1;3;5;3;1" dur="10s" repeatCount="indefinite" />
+                            <animate attributeName="baseFrequency" values="0.03;0.05;0.03" dur="6s" repeatCount="indefinite" />
+                        </feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+                    </filter>
+                </defs>
+            </svg>
+
             <video
                 src="/videos/pensandohaciaarriba.webm"
                 loop
@@ -138,29 +151,36 @@ const HabilidadesContent: React.FC = () => {
                 </header>
                 <div className="skills-grid">
                     {skillsData.map((skillGroup, index) => (
-                        <div key={index} className="skill-card">
-                            <div className="skill-card-inner">
-                                <div className="skill-card-front">
-                                    <h3>{skillGroup.stack}</h3>
-                                </div>
-                                <div className="skill-card-back">
-                                    {skillGroup.technologies.map((tech, techIndex) => {
-                                        const IconComponent = tech.icon;
-                                        return (
-                                            <div key={techIndex} className="tech-item">
-                                                {IconComponent && (
-                                                    <IconComponent 
-                                                        className="tech-icon" 
-                                                        style={{ color: tech.color }}
-                                                        size={20}
-                                                    />
-                                                )}
-                                                <p>{tech.name}</p>
-                                            </div>
-                                        );
-                                    })}
+                        <div key={index} className="skill-card-wrapper">
+                            {/* Tarjeta con efecto flip */}
+                            <div className="skill-card">
+                                <div className="skill-card-inner">
+                                    <div className="skill-card-front">
+                                        <h3>{skillGroup.stack}</h3>
+                                    </div>
+                                    <div className="skill-card-back">
+                                        {skillGroup.technologies.map((tech, techIndex) => {
+                                            const IconComponent = tech.icon;
+                                            return (
+                                                <div key={techIndex} className="tech-item">
+                                                    {IconComponent && (
+                                                        <IconComponent
+                                                            className="tech-icon"
+                                                            style={{ color: tech.color }}
+                                                            size={20}
+                                                        />
+                                                    )}
+                                                    <p>{tech.name}</p>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
                                 </div>
                             </div>
+                            {/* Capas del borde eléctrico */}
+                            <div className="skill-electric-border" aria-hidden="true" />
+                            <div className="skill-glow-1" aria-hidden="true" />
+                            <div className="skill-glow-2" aria-hidden="true" />
                         </div>
                     ))}
                 </div>

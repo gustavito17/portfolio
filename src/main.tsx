@@ -7,6 +7,7 @@ import MisProyectos from './pages/proyectos/MisProyectos'
 import FinanzasDetalles from './pages/proyectos/FinanzasDetalles' // Importar el nuevo componente
 import Concesionaria from './pages/proyectos/Concesionaria'
 import ControlStock from './pages/proyectos/controlstock'
+import GusPad from './pages/proyectos/GusPad'
 import Habilidades from './pages/habilidades/Habilidades';
 import Educacion from './pages/educacion/Educacion';
 import './styles/index.css'
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/proyectos/finanzas" element={<FinanzasDetalles />} />
         <Route path="/proyectos/concesionaria" element={<Concesionaria />} />
         <Route path="/proyectos/controlstock" element={<ControlStock />} />
+        <Route path="/proyectos/guspad" element={<GusPad />} />
         <Route path="/educacion" element={<Educacion />} />
         {/* Add other routes as needed */}
       </Routes>

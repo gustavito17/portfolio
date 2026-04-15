@@ -2,7 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import "./MisProyectos.css";
-import { FaReact, FaNode, FaGit, FaGithub, FaBootstrap, FaCss3Alt, FaCloud, FaPalette, FaPython, FaDatabase, FaServer, FaLock, FaEnvelope, FaJava, FaProjectDiagram, FaFileCode, FaUsersCog, FaSitemap, FaClipboardCheck, FaShieldAlt, FaCogs, FaFileAlt, FaCodeBranch, FaArrowUp, FaCheckCircle, FaCode, FaLayerGroup, FaChartBar, FaExchangeAlt, FaTerminal, FaRocket } from 'react-icons/fa';
+import { FaReact, FaNode, FaGit, FaGithub, FaBootstrap, FaCss3Alt, FaCloud, FaPalette, FaPython, FaDatabase, FaServer, FaLock, FaEnvelope, FaJava, FaProjectDiagram, FaFileCode, FaUsersCog, FaSitemap, FaClipboardCheck, FaShieldAlt, FaCogs, FaFileAlt, FaCodeBranch, FaArrowUp, FaCheckCircle, FaCode, FaLayerGroup, FaChartBar, FaExchangeAlt, FaTerminal, FaRocket, FaBell, FaMobile } from 'react-icons/fa';
 import { 
   SiExpress, 
   SiJsonwebtokens, 
@@ -174,6 +174,22 @@ const SkillIcon: React.FC<{ skill: string }> = ({ skill }) => {
       return <FaFileCode title={skill} size={24} />;
     case 'rbac':
       return <FaUsersCog title={skill} />;
+    case 'react native':
+      return <FaMobile title={skill} size={24} />;
+    case 'expo':
+      return <FaRocket title={skill} size={24} />;
+    case 'supabase':
+      return <FaDatabase title={skill} size={24} />;
+    case 'asyncstorage':
+      return <FaDatabase title={skill} size={24} />;
+    case 'expo notifications':
+      return <FaBell title={skill} size={24} />;
+    case 'secure store':
+      return <FaLock title={skill} size={24} />;
+    case 'joi':
+      return <FaCheckCircle title={skill} size={24} />;
+    case 'jest':
+      return <FaCheckCircle title={skill} size={24} />;
     default:
       return <span>{skill}</span>;
   }
@@ -212,11 +228,15 @@ const projects: Project[] = [
     exploreUrl: "/proyectos/controlstock"
   },
   {
-    title: "Desconecta",
-    description: "En desarrollo: una app para pausar el uso de aplicaciones cuando lo necesites.",
-    imageUrl: "/images/proyectos/finanzas/nuevomov.png",
-    skills: [],
-    videoUrl: null // Este proyecto no tiene video
+    title: "GusPad",
+    description: "App mobile de gestión de tareas y notas con autenticación, backend propio en la nube y notificaciones de recordatorio.",
+    imageUrl: "/images/proyectos/notas/vistacarpetas.jpg",
+    skills: [
+      "React Native", "Expo", "TypeScript", "Node.js", "Express",
+      "PostgreSQL", "Supabase", "JWT", "Joi", "Jest",
+      "AsyncStorage", "Secure Store", "Expo Notifications", "Render", "Git"
+    ],
+    exploreUrl: "/proyectos/guspad"
   }
 ];
 
@@ -288,7 +308,7 @@ const MisProyectosContent: React.FC = () => {
                       className="small-corner-video"
                     />
                   )}
-                  {project.title === "Desconecta" && (
+                  {project.title === "GusPad" && (
                     <video
                       src="/videos/sorprendido.webm"
                       loop

@@ -41,46 +41,113 @@
 
 /* Estilo para botones (base e INACTIVO) */
 .effects label {
+  --spark-duration: 1.8s;
   display: inline-block;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Sombra más intensa */
   font-size: 1.2rem;
-  
-  /* Colores para estado INACTIVO */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, scale 0.25s ease;
+
+  /* Colores INACTIVO */
   background: var(--page-accent, #A9BE9D);
   color: var(--page-bg, #0B343C) !important;
+  box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.6),
+    0 0.05em 0 0 rgba(255,255,255,0.15) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.2) inset;
 }
 
-/* Estilo para el botón ACTIVO (cuando el radio está seleccionado) */
+/* Botón ACTIVO */
 .effects input[type="radio"]:checked + a label,
 .effects input[type="radio"]:checked + label {
-  /* Colores para estado ACTIVO */
   background: var(--page-bg, #0B343C) !important;
   color: var(--page-accent, #A9BE9D) !important;
   border: none !important;
-  box-shadow: none !important;
+  box-shadow:
+    0 0 1.2em 0.3em rgba(169, 190, 157, 0.2),
+    0 0.05em 0 0 rgba(169, 190, 157, 0.25) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.4) inset !important;
 }
 
 /* HOVER en botones INACTIVOS */
 .effects input[type="radio"]:not(:checked) + a label:hover,
 .effects input[type="radio"]:not(:checked) + label:hover {
-  /* Invierte los colores del estado inactivo */
   background: var(--page-bg, #0B343C) !important;
   color: var(--page-accent, #A9BE9D) !important;
-  box-shadow: none;
+  scale: 1.05;
+  box-shadow:
+    0 0 1.8em 0.6em rgba(169, 190, 157, 0.35),
+    0 0.05em 0 0 rgba(169, 190, 157, 0.4) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.3) inset !important;
 }
 
 /* HOVER en el botón ACTIVO */
 .effects input[type="radio"]:checked + a label:hover,
 .effects input[type="radio"]:checked + label:hover {
-  /* Invierte los colores del estado activo */
   background: var(--page-accent, #A9BE9D) !important;
   color: var(--page-bg, #0B343C) !important;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); /* Sombra más intensa en hover */
+  scale: 1.05;
+  box-shadow:
+    0 0 1.5em 0.4em rgba(169, 190, 157, 0.25),
+    0 0.05em 0 0 rgba(255,255,255,0.2) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.15) inset !important;
+}
+
+/* === SPARK: borde luminoso que gira alrededor del botón === */
+.nav-spark {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+  mask: linear-gradient(white, transparent 50%);
+  animation: navSparkFlip calc(var(--spark-duration, 1.8s) * 2) infinite steps(2, end);
+  opacity: 0.18;
+  transition: opacity 0.25s ease;
+}
+
+.nav-spark::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1;
+  top: 0;
+  left: 50%;
+  translate: -50% -15%;
+  transform: rotate(-90deg);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0 340deg,
+    white 360deg
+  );
+  animation: navSparkRotate var(--spark-duration, 1.8s) linear infinite both;
+}
+
+@keyframes navSparkFlip {
+  to { rotate: 360deg; }
+}
+
+@keyframes navSparkRotate {
+  to { transform: rotate(90deg); }
+}
+
+/* Spark más visible en botón activo */
+.effects input[type="radio"]:checked + a label .nav-spark,
+.effects input[type="radio"]:checked + label .nav-spark {
+  opacity: 0.45;
+}
+
+/* Spark a plena visibilidad en cualquier hover */
+.effects input[type="radio"]:not(:checked) + a label:hover .nav-spark,
+.effects input[type="radio"]:not(:checked) + label:hover .nav-spark,
+.effects input[type="radio"]:checked + a label:hover .nav-spark,
+.effects input[type="radio"]:checked + label:hover .nav-spark {
+  opacity: 0.9;
 }
 
 /* --- Navegación de Puntos --- */
@@ -180,39 +247,69 @@
 
 /* Estilo para enlaces móviles (base e INACTIVO) */
 .mobile-nav-panel .effects a {
+  --spark-duration: 1.8s;
   display: inline-block;
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
   font-size: 1.2rem;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, scale 0.25s ease;
+
   background: var(--page-accent, #A9BE9D);
   color: var(--page-bg, #0B343C) !important;
-  text-align: center;
+  box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.6),
+    0 0.05em 0 0 rgba(255,255,255,0.15) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.2) inset;
 }
 
-/* Estilo para el enlace ACTIVO */
+/* Enlace ACTIVO */
 .mobile-nav-panel .effects a.active {
   background: var(--page-bg, #0B343C) !important;
   color: var(--page-accent, #A9BE9D) !important;
   border: none !important;
-  box-shadow: none !important;
+  box-shadow:
+    0 0 1.2em 0.3em rgba(169, 190, 157, 0.2),
+    0 0.05em 0 0 rgba(169, 190, 157, 0.25) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.4) inset !important;
 }
 
 /* HOVER en enlaces INACTIVOS */
 .mobile-nav-panel .effects a:not(.active):hover {
   background: var(--page-bg, #0B343C) !important;
   color: var(--page-accent, #A9BE9D) !important;
-  box-shadow: none;
+  scale: 1.05;
+  box-shadow:
+    0 0 1.8em 0.6em rgba(169, 190, 157, 0.35),
+    0 0.05em 0 0 rgba(169, 190, 157, 0.4) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.3) inset !important;
 }
 
-/* HOVER en el enlace ACTIVO */
+/* HOVER en enlace ACTIVO */
 .mobile-nav-panel .effects a.active:hover {
   background: var(--page-accent, #A9BE9D) !important;
   color: var(--page-bg, #0B343C) !important;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  scale: 1.05;
+  box-shadow:
+    0 0 1.5em 0.4em rgba(169, 190, 157, 0.25),
+    0 0.05em 0 0 rgba(255,255,255,0.2) inset,
+    0 -0.05em 0 0 rgba(0,0,0,0.15) inset !important;
+}
+
+/* Spark en mobile */
+.mobile-nav-panel .effects a .nav-spark {
+  opacity: 0.18;
+}
+.mobile-nav-panel .effects a.active .nav-spark {
+  opacity: 0.45;
+}
+.mobile-nav-panel .effects a:hover .nav-spark {
+  opacity: 0.9;
 }
 
 /* --- REGLAS RESPONSIVE --- */
@@ -300,7 +397,7 @@
 @media (max-width: 1366px) {
 
     .mobile-nav-panel.is-open {
-        background-color: rgba(11, 52, 60, 0.85); /* Color de fondo con transparencia */
+        background-color: color-mix(in srgb, var(--page-bg, #0B343C) 85%, transparent); /* Color de fondo con transparencia */
         backdrop-filter: blur(10px); /* Efecto de desenfoque */
         -webkit-backdrop-filter: blur(10px); /* Para Safari */
     }

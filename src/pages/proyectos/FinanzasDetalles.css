@@ -24,7 +24,7 @@
 .hero-overlay {
   width: 100%;
   padding: 2rem;
-  background: linear-gradient(to top, rgba(11, 52, 60, 1) 0%, rgba(11, 52, 60, 0) 100%);
+  background: linear-gradient(to top, var(--page-bg, #0B343C) 0%, transparent 100%);
 }
 
 .hero-content {
@@ -132,7 +132,7 @@
   left: 0;
   right: 0;
   padding: 0.5rem;
-  background: linear-gradient(to top, rgba(11, 52, 60, 0.9) 0%, rgba(11, 52, 60, 0) 100%);
+  background: linear-gradient(to top, color-mix(in srgb, var(--page-bg, #0B343C) 90%, transparent) 0%, transparent 100%);
   color: white;
   font-size: 0.9rem;
   text-align: center;
@@ -150,7 +150,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  background-color: rgba(11, 52, 60, 0.85);
+  background-color: color-mix(in srgb, var(--page-bg, #0B343C) 85%, transparent);
 }
 
 .lightbox-image {
@@ -181,7 +181,7 @@
   font-size: 1.2rem;
   font-family: var(--font-titulo, 'Sequiel', sans-serif);
   font-weight: bold;
-  background: rgba(11, 52, 60, 0.75);
+  background: color-mix(in srgb, var(--page-bg, #0B343C) 75%, transparent);
   color: var(--page-accent, #A9BE9D);
   border: none;
 }
@@ -197,7 +197,7 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 20;
-  background-color: rgba(11, 52, 60, 0.6);
+  background-color: color-mix(in srgb, var(--page-bg, #0B343C) 60%, transparent);
   border: 1px solid var(--page-accent, #A9BE9D);
   color: var(--page-accent, #A9BE9D);
   font-size: 1.5rem;
@@ -228,8 +228,8 @@
   padding: 10px 20px;
   font-size: 1.1rem;
   box-shadow: 2px 2px 4px #000000;
-  background: #0B343C;
-  color: #A9BE9D;
+  background: var(--page-bg, #0B343C);
+  color: var(--page-accent, #A9BE9D);
   border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -244,8 +244,8 @@
 }
 
 .social-button:hover {
-  background: #A9BE9D;
-  color: #0B343C;
+  background: var(--page-accent, #A9BE9D);
+  color: var(--page-bg, #0B343C);
 }
 
 .social-button svg {

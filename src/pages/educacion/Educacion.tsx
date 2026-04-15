@@ -182,6 +182,10 @@ const EducacionContent: React.FC = () => {
             <div className="educacion-certificados-grid" ref={certificadosGalleryRef}>
               {certificados.map((cert, idx) => (
                 <article key={cert.id} className="card certificado-card" onClick={() => handleCertificadoClick(idx)}>
+                  <svg className="cert-svg-border" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 190" preserveAspectRatio="none" width="100%" height="100%" aria-hidden="true">
+                    {/* Un solo rect que sigue el border-radius del card (rx=14 ≈ 15px CSS) */}
+                    <rect className="cert-rect" x="1" y="1" width="248" height="188" rx="14" ry="14" />
+                  </svg>
                   <div className="card-body">
                       <h3 className="card-main-title">{cert.nombre}</h3>
                       <p className="card-institution">{cert.institucion}</p>
@@ -256,7 +260,7 @@ const EducacionLayout: React.FC<{ isLanding?: boolean; isMobile: boolean }> = ({
           // Si no existe (por Suspense), esperar a que aparezca en el DOM
           const container = document.querySelector('.landing-page-container');
           if (container) {
-            const observer = new MutationObserver((mutations, obs) => {
+            const observer = new MutationObserver((_mutations, obs) => {
               const el = document.getElementById(targetId);
               if (el) {
                 scrollToTarget(el);

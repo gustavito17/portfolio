@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
@@ -101,7 +101,10 @@ const Navbar: React.FC = () => {
               readOnly
             />
             <Link to={link.path}>
-              <label htmlFor={`desktop-radio-${link.id}`}>{link.label}</label>
+              <label htmlFor={`desktop-radio-${link.id}`}>
+                <span className="nav-spark" />
+                {link.label}
+              </label>
             </Link>
           </React.Fragment>
         ))}
@@ -140,6 +143,7 @@ const Navbar: React.FC = () => {
               href={`#${link.id}`}
               onClick={(e) => handleMobileLinkClick(e, link.id, link.path)}
             >
+              <span className="nav-spark" />
               {link.label}
             </a>
           ))}
