@@ -114,8 +114,7 @@
     gap: 20px;
     padding: 20px;
     max-width: 1100px;
-    margin: 0;
-    margin-left: 20px;
+    margin: 0 auto;
     position: relative;
     top: 80px;
     z-index: 1;
@@ -313,8 +312,8 @@
     line-height: 1.2;
 }
 
-/* --- Tablet (581px to 1200px) --- NUEVAS REGLAS RESPONSIVE --- */
-@media (min-width: 581px) and (max-width: 1200px) {
+/* --- Tablet (640px to 1200px) --- NUEVAS REGLAS RESPONSIVE --- */
+@media (min-width: 640px) and (max-width: 1200px) {
     .habilidades-header {
         position: relative;
         top: 0;
@@ -328,7 +327,6 @@
         grid-template-columns: repeat(3, 1fr); /* 3 columnas para que quepan todas las tarjetas */
         gap: 15px;
         padding: 20px;
-        top: 120px;
         top: 20px;
         margin: 0 auto;
         width: 90%;
@@ -353,8 +351,8 @@
     }
 }
 
-/* --- Mobile (up to 580px) --- NUEVAS REGLAS RESPONSIVE --- */
-@media (max-width: 580px) {
+/* --- Mobile (up to 639px) --- NUEVAS REGLAS RESPONSIVE --- */
+@media (max-width: 639px) {
     .habilidades-header {
         position: relative;
         top: 0;
@@ -404,8 +402,8 @@
         }
     }
     
-    /* --- Tablet Vertical (581px to 1200px) --- */
-    @media (min-width: 581px) and (max-width: 1200px) and (orientation: portrait) {
+    /* --- Tablet Vertical (640px to 1200px) --- */
+    @media (min-width: 640px) and (max-width: 1200px) and (orientation: portrait) {
         .habilidades-header h1 {
             font-size: 4rem; /* Increased font size for tablet portrait */
         }
@@ -417,8 +415,7 @@
     .skills-grid {
         grid-template-columns: repeat(2, 1fr); /* 2 columnas en vertical */
         max-width: 750px; /* Evita que las tarjetas se estiren demasiado */
-        top: 100px; /* Ajusta el espacio superior */
-        top: 20px; /* Ajusta el espacio superior */
+        top: 20px;
     }
 
         .habilidades-background-video-right {
@@ -429,8 +426,8 @@
         }
     }
 
-    /* --- Tablet Horizontal (581px to 1200px) --- */
-    @media (min-width: 581px) and (max-width: 1200px) and (orientation: landscape) {
+    /* --- Tablet Horizontal (640px to 1200px) --- */
+    @media (min-width: 640px) and (max-width: 1200px) and (orientation: landscape) {
         .habilidades-background-video-right {
             right: -450px;
             bottom: -450px;
@@ -439,13 +436,12 @@
         }
 
         .skills-grid {
-            top: 60px; /* Reducido para menos espacio con el título */
-            top: 20px; /* Reducido para menos espacio con el título */
+            top: 20px;
         }
     }
     
-    /* --- Mobile Vertical (up to 580px) --- */
-    @media (max-width: 580px) and (orientation: portrait) {
+    /* --- Mobile Vertical (up to 639px) --- */
+    @media (max-width: 639px) and (orientation: portrait) {
         .habilidades-seccion {
             padding-top: 10px;
         }

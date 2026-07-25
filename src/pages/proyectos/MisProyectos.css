@@ -361,8 +361,8 @@
   }
 }
 
-/* --- Tablet Vertical (Default for 581px to 1024px) --- */
-@media (min-width: 581px) and (max-width: 1024px) {
+/* --- Tablet Vertical (Default for 640px to 1024px) --- */
+@media (min-width: 640px) and (max-width: 1024px) {
   .proyectos-seccion {
     padding-left: 40px;
     padding-right: 40px;
@@ -414,8 +414,8 @@
 }
 
 
-/* --- Mobile (up to 580px) --- */
-@media (max-width: 580px) {
+/* --- Mobile (up to 639px) --- */
+@media (max-width: 639px) {
   .proyectos-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -449,8 +449,8 @@
   }
 }
 
-/* --- Mobile Horizontal (hasta 580px de ancho y landscape) - General */
-@media (max-width: 580px) and (orientation: landscape) {
+/* --- Mobile Horizontal (hasta 639px de ancho y landscape) - General */
+@media (max-width: 639px) and (orientation: landscape) {
   .proyectos-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;

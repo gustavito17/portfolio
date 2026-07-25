@@ -55,7 +55,7 @@ const SobreMiContent: React.FC = () => {
           {/* Lado derecho: Texto */}
           <div id="sobre-mi-text-container" className="flex flex-col text-left items-start w-full md:pr-12 lg:pr-12 lg:max-w-[40%] lg:-ml-16">
             <h1
-              className="font-sequel font-bold text-[5rem] sm:text-[7rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] leading-none mb-0 whitespace-nowrap text-shadow-dark"
+              className="font-sequel font-bold text-[5rem] sm:text-[7rem] md:text-[8rem] lg:text-[10rem] leading-none mb-0 whitespace-nowrap text-shadow-dark"
               style={{ fontFamily: 'Tanker, sans-serif', marginBottom: 0, paddingBottom: 0, color: '#A9BE9D' }}
             >
               Sobre mí

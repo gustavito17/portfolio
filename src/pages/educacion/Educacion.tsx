@@ -42,7 +42,7 @@ interface Certificado {
 // Datos de ejemplo que puedes reemplazar
 const titulos: Titulo[] = [
   { id: 1, nombre: 'Licenciatura en Ciencias Informáticas. Enfasis ASI y PC', institucion: 'Universidad Nacional de Asunción', anio: '2020-2024', logo: '/images/educacion/fpuna_logo.svg'},
-  { id: 2, nombre: 'Bachiller Técnico en Informática', institucion: 'CEI Carlos Rubén Cáceres Buscio', anio: '2016-2018', logo: '/images/educacion/ceicrcb.png' },
+  { id: 2, nombre: 'Bachiller Técnico en Informática', institucion: 'CEI Carlos Rubén Cáceres Buscio', anio: '2016-2018', logo: '/images/educacion/ceicrcb.webp' },
 ];
 
 const credenciales: Credencial[] = [

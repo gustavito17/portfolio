@@ -97,7 +97,7 @@
     0 -0.05em 0 0 rgba(0,0,0,0.15) inset !important;
 }
 
-/* === SPARK: borde luminoso que gira alrededor del botón === */
+/* === WATER: relleno de agua con superficie ondulada === */
 .nav-spark {
   position: absolute;
   inset: 0;
@@ -105,35 +105,31 @@
   overflow: hidden;
   pointer-events: none;
   z-index: -1;
-  mask: linear-gradient(white, transparent 50%);
-  animation: navSparkFlip calc(var(--spark-duration, 1.8s) * 2) infinite steps(2, end);
-  opacity: 0.18;
+  opacity: 0.35;
   transition: opacity 0.25s ease;
+  background: rgba(255, 255, 255, 0.65);
+  clip-path: polygon(
+    0% 46%, 6.25% 42%, 12.5% 46%, 18.75% 50%, 25% 54%, 31.25% 58%,
+    37.5% 54%, 43.75% 50%, 50% 46%, 56.25% 42%, 62.5% 46%, 68.75% 50%,
+    75% 54%, 81.25% 58%, 87.5% 54%, 93.75% 50%, 100% 46%,
+    100% 100%, 0% 100%
+  );
+  animation: navWaterSurface 2.5s ease-in-out infinite alternate;
 }
 
 .nav-spark::before {
-  content: '';
-  position: absolute;
-  width: 200%;
-  aspect-ratio: 1;
-  top: 0;
-  left: 50%;
-  translate: -50% -15%;
-  transform: rotate(-90deg);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0 340deg,
-    white 360deg
-  );
-  animation: navSparkRotate var(--spark-duration, 1.8s) linear infinite both;
+  display: none;
 }
 
-@keyframes navSparkFlip {
-  to { rotate: 360deg; }
-}
-
-@keyframes navSparkRotate {
-  to { transform: rotate(90deg); }
+@keyframes navWaterSurface {
+  to {
+    clip-path: polygon(
+      0% 54%, 6.25% 58%, 12.5% 54%, 18.75% 50%, 25% 46%, 31.25% 42%,
+      37.5% 46%, 43.75% 50%, 50% 54%, 56.25% 58%, 62.5% 54%, 68.75% 50%,
+      75% 46%, 81.25% 42%, 87.5% 46%, 93.75% 50%, 100% 54%,
+      100% 100%, 0% 100%
+    );
+  }
 }
 
 /* Spark más visible en botón activo */
@@ -147,7 +143,7 @@
 .effects input[type="radio"]:not(:checked) + label:hover .nav-spark,
 .effects input[type="radio"]:checked + a label:hover .nav-spark,
 .effects input[type="radio"]:checked + label:hover .nav-spark {
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 /* --- Navegación de Puntos --- */
@@ -197,24 +193,12 @@
     height: 4px;
     background-color: var(--page-accent, #A9BE9D);
     border-radius: 3px;
-    transition: all 0.3s ease-in-out;
     position: absolute;
 }
 
 .hamburger-button .bar1 { top: 0; }
 .hamburger-button .bar2 { top: 50%; transform: translateY(-50%); }
 .hamburger-button .bar3 { bottom: 0; }
-
-/* Animación del botón a "X" */
-.hamburger-button.is-open .bar1 {
-    transform: translateY(12px) rotate(45deg);
-}
-.hamburger-button.is-open .bar2 {
-    opacity: 0;
-}
-.hamburger-button.is-open .bar3 {
-    transform: translateY(-12px) rotate(-45deg);
-}
 
 
 /* --- Panel de Navegación Móvil --- */
@@ -301,15 +285,10 @@
     0 -0.05em 0 0 rgba(0,0,0,0.15) inset !important;
 }
 
-/* Spark en mobile */
-.mobile-nav-panel .effects a .nav-spark {
-  opacity: 0.18;
-}
-.mobile-nav-panel .effects a.active .nav-spark {
-  opacity: 0.45;
-}
-.mobile-nav-panel .effects a:hover .nav-spark {
-  opacity: 0.9;
+/* Spark en mobile — desactivado */
+.mobile-nav-panel .nav-spark,
+.mobile-nav-panel .nav-spark::before {
+  display: none;
 }
 
 /* --- REGLAS RESPONSIVE --- */
@@ -397,6 +376,7 @@
 @media (max-width: 1366px) {
 
     .mobile-nav-panel.is-open {
+        background-color: rgba(11, 52, 60, 0.85);
         background-color: color-mix(in srgb, var(--page-bg, #0B343C) 85%, transparent); /* Color de fondo con transparencia */
         backdrop-filter: blur(10px); /* Efecto de desenfoque */
         -webkit-backdrop-filter: blur(10px); /* Para Safari */

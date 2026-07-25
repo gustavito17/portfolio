@@ -279,7 +279,7 @@ const MisProyectosContent: React.FC = () => {
   return (
     <>
       <section className="proyectos-seccion" onClick={() => isTouchDevice && activeCard !== null && setActiveCard(null)}>
-        <div className="proyectos-content-wrapper">
+        <div>
           <h2 className="proyectos-titulo-main">Mis Proyectos</h2>
           
           <div className="proyectos-grid">

@@ -72,16 +72,18 @@
   }
 }
 
-cuentraated text styles
 .animated-text {
-  --chars: 32; /* cantidad de caracteres visibles */
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
   box-sizing: content-box;
-  border-right: 1px solid currentColor;
-  animation: typing 12.5s steps(28, end) infinite, caret 0.8s step-end infinite;
-  font-size: 0.875rem; /* Añadir esta línea para hacer el texto más pequeño */
+  animation: typing 5s steps(24, end) 1.25s infinite alternate;
+  font-size: 0.875rem;
+}
+
+@keyframes typing {
+  from { width: 0ch; }
+  to { width: 24ch; }
 }
 
 @keyframes caret {

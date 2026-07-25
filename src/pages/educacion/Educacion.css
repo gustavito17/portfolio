@@ -462,8 +462,8 @@
     }
 }
 
-/* --- Tablet Vertical (581px - 1024px) --- */
-@media (min-width: 581px) and (max-width: 1024px) {
+/* --- Tablet Vertical (640px - 1024px) --- */
+@media (min-width: 640px) and (max-width: 1024px) {
     .certificados-gallery-wrapper {
         max-width: 100%; /* Restaurado al ancho completo para correcta posición de flechas */
     }
@@ -519,8 +519,8 @@
     }
 }
 
-/* --- Mobile (hasta 580px) --- */
-@media (max-width: 580px) {
+/* --- Mobile (hasta 639px) --- */
+@media (max-width: 639px) {
     .educacion-seccion {
         padding: 80px 20px 40px; /* Padding ajustado para el header */
     }

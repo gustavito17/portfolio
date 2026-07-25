@@ -374,6 +374,22 @@
   }
 }
 
+/* Desktop / Ultrawide (>1366px) */
+@media (min-width: 1367px) {
+  .gallery-side-video {
+    max-width: 160px;
+    top: 60%;
+  }
+
+  .gallery-side-video-left {
+    left: calc(-25vw + 191px);
+  }
+
+  .gallery-side-video-right {
+    right: calc(-25vw + 191px);
+  }
+}
+
 /* Mobile Vertical */
 @media (max-width: 767px) and (orientation: portrait) {
   .hero-container {
